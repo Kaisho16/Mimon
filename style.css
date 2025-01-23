@@ -1,0 +1,133 @@
+/* Body Styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #fbeef2; /* Soft pink background */
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Container Styling */
+  .container {
+    position: relative;
+  }
+  
+  /* Envelope Base */
+  .envelope {
+    position: relative;
+    width: 320px;
+    height: 200px;
+    background-color: #fff; /* Clean white envelope */
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  /* Flap */
+  .flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10;
+    height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-bottom: 120px solid #ffb6c1; /* Soft pink flap */
+    transform-origin: top;
+    transition: transform 0.5s ease-in-out;
+    z-index: 2;
+    rotate: 120 deg;
+  }
+  
+  /* Letter */
+  .letter {
+    position: absolute;
+    top: 100%;
+    left: 10px;
+    width: 300px;
+    height: 160px;
+    background-color: #ffeef2; /* Light pink letter */
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    transform: translateY(0);
+    transition: transform 0.5s ease-in-out 0.5s;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  /* Clickable Heart Link */
+  .heart-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    text-decoration: none;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease-in-out 0.5s;
+  }
+  
+  /* Heart Shape */
+  .heart-shape {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: #ff4f5e; /* Vibrant red heart */
+    transform: rotate(-45deg);
+  }
+  
+  .heart-shape::before,
+  .heart-shape::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #ff4f5e;
+    border-radius: 50%;
+  }
+  
+  .heart-shape::before {
+    top: -25px;
+    left: 0;
+  }
+  
+  .heart-shape::after {
+    top: 0;
+    left: 25px;
+  }
+  
+  /* Open State */
+  .envelope.open .flap {
+    transform: rotateX(180deg); /* Opens the flap */
+  }
+  
+  .envelope.open .letter {
+    transform: translateY(-160px); /* Reveal letter */
+  }
+  
+  .envelope.open .heart-link {
+    opacity: 1; /* Show heart when letter is revealed */
+  }
+  
+  /* Subtle Background Pattern */
+  .envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 25% 25%, #ffe5e9 1px, transparent 1px),
+      radial-gradient(circle at 75% 75%, #ffe5e9 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.5;
+  }
+  
